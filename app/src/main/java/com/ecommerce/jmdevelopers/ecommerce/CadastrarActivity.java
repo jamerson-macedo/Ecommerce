@@ -103,8 +103,10 @@ public class CadastrarActivity extends AppCompatActivity {
                                 Toast.makeText(CadastrarActivity.this,
                                         "Conta cadastrada com sucesso !",
                                         Toast.LENGTH_SHORT).show();
-                                progressDialog.dismiss();
 
+                                progressDialog.dismiss();
+                                Intent intent = new Intent(CadastrarActivity.this, HomeActivity.class);
+                                startActivity(intent);
 
                             } else {
                                 String excecao = "";

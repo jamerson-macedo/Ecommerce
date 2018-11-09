@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+    <Button
+        android:id="@+id/buttomhome"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:text="logout"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="330dp" />
+
 </android.support.constraint.ConstraintLayout>

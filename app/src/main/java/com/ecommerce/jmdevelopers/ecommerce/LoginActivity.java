@@ -16,17 +16,23 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.ecommerce.jmdevelopers.ecommerce.Assistencia.DadosOnline;
 import com.ecommerce.jmdevelopers.ecommerce.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
     private ImageView logo;
     private EditText campotelefone;
     private EditText camposenha;
     private ProgressDialog progressDialog;
+    // colocando para quando clicar em remenber-me ai entrar direto
+    private CheckBox checkBox;
 
     private Button botaologin;
 
@@ -38,12 +44,16 @@ public class LoginActivity extends AppCompatActivity {
         botaologin = findViewById(R.id.btt_login_activity);
         camposenha = findViewById(R.id.loginsenha);
         campotelefone = findViewById(R.id.logintelefone);
+        checkBox=findViewById(R.id.lembrarme);
+        // inicializando paper
+        Paper.init(this);
+
         Animation fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         Animation subir = AnimationUtils.loadAnimation(this, R.anim.subir);
         logo.startAnimation(fadein);
         botaologin.startAnimation(subir);
         // muito top essa classe tem que importar la no git
-        YoYo.with(Techniques.Hinge).duration(2000).playOn(findViewById(R.id.logintelefone));
+        YoYo.with(Techniques.ZoomInDown).duration(2000).playOn(findViewById(R.id.logintelefone));
         progressDialog = new ProgressDialog(this);
         botaologin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,19 +80,23 @@ public class LoginActivity extends AppCompatActivity {
                 validarlogin(telefonedigitado, senhadigitado);
 
             } else {
-                Toast.makeText(CadastrarActivity.this,
+                Toast.makeText(LoginActivity.this,
                         "Preencha a senha!",
                         Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(CadastrarActivity.this,
+            Toast.makeText(LoginActivity.this,
                     "Preencha o telefone!",
                     Toast.LENGTH_SHORT).show();
         }
     }
 
     private void validarlogin(final String telefonedigitado, final String senhadigitado) {
+        if(checkBox.isChecked()){
+            Paper.book().write(DadosOnline.telefonedousuario,telefonedigitado);
+            Paper.book().write(DadosOnline.senhadousuario,senhadigitado);
 
+        }
         final DatabaseReference raiz;
         raiz = ConfiguracaoFirebase.getFirebaseDatabase();
         raiz.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -90,9 +104,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("users").child(telefonedigitado).exists()) {
 
-                    User dadosusuario=dataSnapshot.child("users").child(telefonedigitado).getValue(User.class);
-                    if(dadosusuario.getTelefone().equals(telefonedigitado)){
-                        if(dadosusuario.getSenha().equals(senhadigitado)){
+                    User dadosusuario = dataSnapshot.child("users").child(telefonedigitado).getValue(User.class);
+                    if (dadosusuario.getTelefone().equals(telefonedigitado)) {
+                        if (dadosusuario.getSenha().equals(senhadigitado)) {
                             progressDialog.dismiss();
                             Toast.makeText(LoginActivity.this,
                                     "Logado com sucesso",
@@ -101,26 +115,19 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
 
-                        }else{
+                        } else {
                             progressDialog.dismiss();
                             Toast.makeText(LoginActivity.this,
                                     "Senha Diferente ",
                                     Toast.LENGTH_SHORT).show();
 
                         }
-
-
-
                     }
-
-
                 } else {
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,
                             "Usuario não cadastrado",
                             Toast.LENGTH_SHORT).show();
-
-
                 }
             }
 
