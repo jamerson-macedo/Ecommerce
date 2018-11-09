@@ -134,8 +134,6 @@ public class CadastrarActivity extends AppCompatActivity {
 
                         }
                     });
-
-
                 } else {
                     Toast.makeText(CadastrarActivity.this,
                             "O Numero " + telefonedigitado + "Ja esta cadastrado !",
