@@ -7,6 +7,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 public class LoginActivity extends AppCompatActivity {
     private ImageView logo;
     private Button botaologin;
@@ -20,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
         Animation subir=AnimationUtils.loadAnimation(this,R.anim.subir);
         logo.startAnimation(fadein);
         botaologin.startAnimation(subir);
+        // muito top essa classe tem que importar la no git
+        YoYo.with(Techniques.StandUp).duration(2000).playOn(findViewById(R.id.logintelefone));
 
     }
 }
