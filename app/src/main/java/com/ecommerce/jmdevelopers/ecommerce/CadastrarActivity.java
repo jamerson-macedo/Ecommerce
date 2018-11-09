@@ -125,7 +125,7 @@ public class CadastrarActivity extends AppCompatActivity {
                                         excecao,
                                         Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
-                               
+
                                 Intent intent = new Intent(CadastrarActivity.this, MainActivity.class);
                                 startActivity(intent);
 
