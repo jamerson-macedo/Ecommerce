@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -30,7 +31,9 @@ public class LoginActivity extends AppCompatActivity {
     private ImageView logo;
     private EditText campotelefone;
     private EditText camposenha;
+    private TextView linkadmin, noadmin;
     private ProgressDialog progressDialog;
+    private String RAIZBANCO = "users";
     // colocando para quando clicar em remenber-me ai entrar direto
     private CheckBox checkBox;
 
@@ -44,7 +47,11 @@ public class LoginActivity extends AppCompatActivity {
         botaologin = findViewById(R.id.btt_login_activity);
         camposenha = findViewById(R.id.loginsenha);
         campotelefone = findViewById(R.id.logintelefone);
-        checkBox=findViewById(R.id.lembrarme);
+        checkBox = findViewById(R.id.lembrarme);
+        linkadmin = findViewById(R.id.link_admin);
+        noadmin = findViewById(R.id.link_nao_admin);
+
+
         // inicializando paper
         Paper.init(this);
 
@@ -53,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         logo.startAnimation(fadein);
         botaologin.startAnimation(subir);
         // muito top essa classe tem que importar la no git
-        YoYo.with(Techniques.ZoomInDown).duration(2000).playOn(findViewById(R.id.logintelefone));
+        YoYo.with(Techniques.RubberBand).duration(2000).playOn(findViewById(R.id.logintelefone));
         progressDialog = new ProgressDialog(this);
         botaologin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +68,28 @@ public class LoginActivity extends AppCompatActivity {
                 logarusuario();
             }
         });
+        linkadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mudar o texto do botao do adm
+                botaologin.setText("Login Adm");
+                // deixa o botao invisivel
+                linkadmin.setVisibility(View.INVISIBLE);
+                noadmin.setVisibility(View.VISIBLE);
+                RAIZBANCO = "admins";
 
-
+            }
+        });
+        noadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                botaologin.setText("Login");
+                // deixa o botao invisivel
+                linkadmin.setVisibility(View.VISIBLE);
+                noadmin.setVisibility(View.INVISIBLE);
+                RAIZBANCO = "users";
+            }
+        });
     }
 
     private void logarusuario() {
@@ -92,9 +119,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validarlogin(final String telefonedigitado, final String senhadigitado) {
-        if(checkBox.isChecked()){
-            Paper.book().write(DadosOnline.telefonedousuario,telefonedigitado);
-            Paper.book().write(DadosOnline.senhadousuario,senhadigitado);
+        if (checkBox.isChecked()) {
+            Paper.book().write(DadosOnline.telefonedousuario, telefonedigitado);
+            Paper.book().write(DadosOnline.senhadousuario, senhadigitado);
 
         }
         final DatabaseReference raiz;
@@ -102,18 +129,27 @@ public class LoginActivity extends AppCompatActivity {
         raiz.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("users").child(telefonedigitado).exists()) {
+                if (dataSnapshot.child(RAIZBANCO).child(telefonedigitado).exists()) {
 
-                    User dadosusuario = dataSnapshot.child("users").child(telefonedigitado).getValue(User.class);
+                    User dadosusuario = dataSnapshot.child(RAIZBANCO).child(telefonedigitado).getValue(User.class);
                     if (dadosusuario.getTelefone().equals(telefonedigitado)) {
                         if (dadosusuario.getSenha().equals(senhadigitado)) {
-                            progressDialog.dismiss();
-                            Toast.makeText(LoginActivity.this,
-                                    "Logado com sucesso",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                            finish();
+                            if (RAIZBANCO.equals("admins")) {
+
+                                Toast.makeText(LoginActivity.this, "ADMIN Logado com sucesso", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+
+                                Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else if (RAIZBANCO.equals("users")) {
+
+                                Toast.makeText(LoginActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
 
                         } else {
                             progressDialog.dismiss();
@@ -137,5 +173,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
     }
 }
