@@ -4,6 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
+    tools:context=".AdminActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:text="Adicione um novo Produto"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/categoria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto">
+
+        <ImageView
+            android:id="@+id/camisas"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:src="@drawable/tshirts"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/esporte"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:src="@drawable/sports"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/vestido_feminino"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/female_dresses"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/sweather"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:src="@drawable/sweather"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoria2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoria">
+
+        <ImageView
+            android:id="@+id/oculos"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+
+            android:src="@drawable/glasses"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/bolsas"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+
+            android:src="@drawable/purses_bags"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/chapeu"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+
+            android:layout_marginRight="20dp"
+            android:src="@drawable/hats"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/tenis"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:src="@drawable/shoess"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoria3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoria2">
+
+        <ImageView
+            android:id="@+id/fones"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:src="@drawable/headphoness"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/notebook"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+
+            android:src="@drawable/laptops"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/relogio"
+            android:layout_width="80dp"
+            android:layout_height="75dp"
+
+            android:layout_marginRight="10dp"
+            android:src="@drawable/watches"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <ImageView
+            android:id="@+id/celular"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:src="@drawable/mobiles"
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

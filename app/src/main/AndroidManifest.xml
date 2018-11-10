@@ -19,7 +19,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".CadastrarActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".AddProductActivity"></activity>
     </application>
 
 </manifest>
