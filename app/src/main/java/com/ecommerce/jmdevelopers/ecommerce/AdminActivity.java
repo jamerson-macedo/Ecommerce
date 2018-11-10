@@ -25,6 +25,94 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        esporte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","esporte");
+                startActivity(intent);
+            }
+        });
+        vestido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","vestido");
+                startActivity(intent);
+            }
+        });
+        sweater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","sweater");
+                startActivity(intent);
+            }
+        });
+        oculos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","oculos");
+                startActivity(intent);
+            }
+        });
+        bolsa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","bolsa");
+                startActivity(intent);
+            }
+        });
+        chapeu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","chapeu");
+                startActivity(intent);
+            }
+        });
+        tenis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","tenis");
+                startActivity(intent);
+            }
+        });
+        fone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","fone");
+                startActivity(intent);
+            }
+        });
+        notebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","notebook");
+                startActivity(intent);
+            }
+        });
+        relogio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","relogio");
+                startActivity(intent);
+            }
+        });
+        telefone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,AddProductActivity.class);
+                intent.putExtra("categoria","celular");
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -37,7 +125,7 @@ public class AdminActivity extends AppCompatActivity {
         vestido=findViewById(R.id.vestido_feminino);
         sweater=findViewById(R.id.sweather);
         oculos=findViewById(R.id.oculos);
-        bolsa=findViewById(R.id.oculos);
+        bolsa=findViewById(R.id.bolsas);
         chapeu=findViewById(R.id.chapeu);
         tenis=findViewById(R.id.tenis);
         fone=findViewById(R.id.fones);
