@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddProductActivity">
+    tools:context=".AddProductActivity"
+    tools:layout_editor_absoluteY="25dp">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/galeria"
+
+        android:layout_width="294dp"
+        android:layout_height="233dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/photp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop" />
+
+    <EditText
+        android:id="@+id/nomeproduto"
+        android:layout_width="387dp"
+        android:layout_height="61dp"
+        android:layout_below="@+id/galeria"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/design_entrada"
+        android:hint="Nome Produto"
+        android:padding="20dp" />
+
+
+    <EditText
+
+        android:id="@+id/descricao"
+        android:layout_width="387dp"
+        android:layout_height="61dp"
+        android:layout_below="@+id/nomeproduto"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/design_entrada"
+        android:hint="Descricao"
+        android:padding="20dp"
+        android:inputType="text"/>
+
+
+    <EditText
+        android:id="@+id/precoproduto"
+        android:layout_width="387dp"
+        android:layout_height="61dp"
+        android:layout_below="@+id/descricao"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/design_entrada"
+        android:hint="preço"
+        android:padding="20dp"
+        android:inputType="number"/>
+
+
+    <Button
+        android:id="@+id/botaoadd"
+        android:layout_width="300dp"
+
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/precoproduto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttons"
+        android:elevation="10dp"
+        android:text="Adicionar"
+        android:textAllCaps="false"
+
+        />
+
+
+</RelativeLayout>
