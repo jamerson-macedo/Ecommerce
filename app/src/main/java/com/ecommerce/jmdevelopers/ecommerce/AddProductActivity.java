@@ -51,7 +51,7 @@ public class AddProductActivity extends AppCompatActivity {
         inputnome = findViewById(R.id.nomeproduto);
         inputdescricao = findViewById(R.id.descricao);
         inputpreco = findViewById(R.id.precoproduto);
-
+        // prgando o nome da categoria da tela anterior
         nomecategoria = getIntent().getExtras().get("categoria").toString();
         imagemref = FirebaseStorage.getInstance().getReference().child("produtos imagens");
         produtosref = FirebaseDatabase.getInstance().getReference().child("produtos");
@@ -71,7 +71,7 @@ public class AddProductActivity extends AppCompatActivity {
 
 
     }
-
+    // aqui eu valido se todos os campos foram preechidos se tudo ocorrer bem ele salva
     private void validardadosproduto() {
         descricao = inputdescricao.getText().toString();
         nomeproduto = inputnome.getText().toString();
@@ -115,7 +115,7 @@ public class AddProductActivity extends AppCompatActivity {
         // aquiele chama e quando pega o dismiss ai ele para
         progressDialog.show();
 
-
+// pegando data e horas
         final Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dataatual = new SimpleDateFormat("MMM ddd, yyyy ");
         savedataatual = dataatual.format(calendar.getTime());
@@ -185,6 +185,7 @@ public class AddProductActivity extends AppCompatActivity {
             Toast.makeText(this,"Problema ao pegar foto",Toast.LENGTH_LONG).show();
         }
     }
+
     private void salvarprodutonofirebase() {
         HashMap<String, Object> objectHashMap = new HashMap<>();
         objectHashMap.put("pid", chaveprodutoaleatoria);

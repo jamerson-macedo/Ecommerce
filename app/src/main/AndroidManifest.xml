@@ -18,9 +18,12 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".CadastrarActivity" />
-        <activity android:name=".HomeActivity" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".AddProductActivity"></activity>
+        <activity android:name=".AddProductActivity" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
