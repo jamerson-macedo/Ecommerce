@@ -144,10 +144,13 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             } else if (RAIZBANCO.equals("users")) {
 
+
                                 Toast.makeText(LoginActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                DadosOnline.usuarioonline=dadosusuario;
                                 startActivity(intent);
+
                                 finish();
                             }
 
